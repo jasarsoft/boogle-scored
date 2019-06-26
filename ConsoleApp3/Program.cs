@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp3
 {
@@ -40,6 +41,24 @@ namespace ConsoleApp3
             }
 
             return point;
+        }
+
+        static IDictionary<string, int> ScoredMulti(IDictionary<string, string[]> pairs)
+        {
+            IDictionary<string, int> result = new Dictionary<string, int>();
+
+            foreach (var item in pairs)
+            {
+                int point = 0;
+                foreach (var s in item.Value)
+                {
+                    point += Scored(s);
+                }
+
+                result.Add(new KeyValuePair<string, int>(item.Key, point);
+            }
+
+            return result;
         }
     }
 }
