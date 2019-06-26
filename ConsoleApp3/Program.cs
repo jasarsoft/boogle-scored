@@ -7,7 +7,18 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IDictionary<string, string[]> pairs = new Dictionary<string, string[]>();
+            pairs.Add("Lucas", new string[] { "am", "bibble", "loo", "malarkey"});
+            pairs.Add("Clara", new string[] { "xertz", "gardyloo", "catty", "fuzzle" });
+            pairs.Add("Klaus", new string[] { "bumfuzzle", "wabbit", "loo", "wampus" });
+
+            var result = ScoredMulti(pairs);
+            foreach (var item in result)
+            {
+                Console.WriteLine("{0}: {1}", item.Key, item.Value);
+            }
+
+            Console.ReadKey();
         }
 
         static int Scored(string word)
@@ -55,7 +66,7 @@ namespace ConsoleApp3
                     point += Scored(s);
                 }
 
-                result.Add(new KeyValuePair<string, int>(item.Key, point);
+                result.Add(new KeyValuePair<string, int>(item.Key, point));
             }
 
             return result;
